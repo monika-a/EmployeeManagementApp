@@ -52,7 +52,7 @@ In VSCode, open a new terminal and navigate to the myExpressApp folder and start
 
 "\myExpressApp>npm start"
 
-The server listens to port 3000
+The server listens on port 3000
 
 # 3. AngularJS
 
@@ -64,6 +64,6 @@ In VSCode, open a new terminal and navigate to the empMgmtApp folder and start t
 
 "\empMgmtApp>ng serve --proxy-config proxy.conf.json"
 
-The server listens to port 4200
+The server listens on port 4200
 
 Browse http://localhost:4200
