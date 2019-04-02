@@ -1,0 +1,60 @@
+<h3>{{FunctionDescription}}</h3>
+
+<form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+    <label>First Name</label>
+        <input type="text" formControlName="firstname">
+    <br>
+    <div id = "error" *ngIf="createformcontrol.firstname.invalid && (createformcontrol.firstname.dirty 
+    || createformcontrol.firstname.touched || createformcontrol.surname.touched || createformcontrol.email.touched 
+    || createformcontrol.dob.touched || createformcontrol.gender.touched)"
+              class="alert alert-danger">
+        <div *ngIf="createformcontrol.firstname.errors.required">
+            First Name is required.
+        </div>
+    </div>
+    <label>Sur Name</label> 
+        <input type="text" formControlName="surname">
+    <br>
+    <div id = "error" *ngIf="createformcontrol.surname.invalid && (createformcontrol.surname.dirty || createformcontrol.surname.touched 
+    || createformcontrol.email.touched || createformcontrol.dob.touched || createformcontrol.gender.touched)"
+              class="alert alert-danger">
+        <div *ngIf="createformcontrol.surname.errors.required">
+            Sur Name is required.
+        </div>
+    </div>
+    <label>Email</label> 
+        <input type="text" formControlName="email">
+    <br>
+    <div id = "error" *ngIf="createformcontrol.email.invalid && (createformcontrol.email.dirty || createformcontrol.email.touched 
+    || createformcontrol.dob.touched || createformcontrol.gender.touched)"
+    class="alert alert-danger">
+        <div *ngIf="createformcontrol.email.errors.required">
+            Email is required.
+        </div>
+        <div *ngIf="createformcontrol.email.errors.pattern">
+            Enter a valid Email.
+        </div>
+    </div>
+    <label>Date of Birth</label>
+        <input type="date" formControlName="dob">
+    <br>
+    <div id = "error" *ngIf="createformcontrol.dob.invalid && (createformcontrol.dob.dirty || createformcontrol.dob.touched 
+    || createformcontrol.gender.touched)"
+    class="alert alert-danger">
+        <div *ngIf="createformcontrol.dob.errors.required">
+            Date of Birth is required.
+        </div>
+    </div>
+    <label>Gender</label>
+        <input id = "radio" type="radio" formControlName="gender" value="male">Male
+        <input id = "radio" type="radio" formControlName="gender" value="female">Female
+    <br>
+    <div id = "error" *ngIf="createformcontrol.gender.invalid && (createformcontrol.gender.dirty || createformcontrol.gender.touched)"
+    class="alert alert-danger">
+        <div *ngIf="createformcontrol.gender.errors.required">
+            Gender is required.
+        </div>
+    </div>
+    
+    <button type="submit" [disabled]="!createForm.valid">Create</button>
+</form>

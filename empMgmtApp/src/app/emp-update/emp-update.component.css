@@ -1,0 +1,45 @@
+h3 {
+    color: blue;
+    padding-bottom: 5px;
+    border-bottom: 3px solid grey;
+    display: inline-block;
+}
+
+#read {
+    font-weight: bold;
+}
+
+button {
+    font-size: 15px;
+    font-weight: bold;
+    padding: 2px 15px;
+    margin-left: 200px;
+    background-color: blue;
+    color: white
+}
+
+button:disabled {
+    background-color: grey;
+    color: black
+}
+
+label {
+    display: inline-block;
+    width: 10em;
+    margin: 0.7em 0;
+}
+
+input {
+    height: 2em;
+    width: 12.5em;
+}
+
+#radio{
+    height: 1em;
+    width: 1em;
+}
+
+#error {
+    font-size: 12px;
+    color: red
+}

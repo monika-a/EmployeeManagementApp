@@ -1,0 +1,68 @@
+<h3>{{FunctionDescription}}</h3>
+
+<form [formGroup]="readForm" (ngSubmit)="onRead()">
+    <div id = "read">
+    <label> Employee Id </label>
+        <input type="number" formControlName="employeeId" value="{{readForm.value.employeeId}}">
+    <br>
+    </div>
+    <div id = "error" *ngIf="readformcontrol.employeeId.invalid && (readformcontrol.employeeId.dirty 
+                || readformcontrol.employeeId.touched)"
+              class="alert alert-danger">
+        <div *ngIf="readformcontrol.employeeId.errors.required">
+                Employee Id is required (Range: 111 - 999).
+        </div>
+    </div>
+    <button type="submit" [disabled]="!readForm.valid">Read</button>
+</form>
+
+<form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+    <label> First Name </label>
+        <input type="text" formControlName="firstname" value="{{updateForm.value.firstname}}">
+    <br>
+    <div id = "error" *ngIf="updateformcontrol.firstname.invalid && (updateformcontrol.firstname.dirty 
+                || updateformcontrol.firstname.touched)"
+              class="alert alert-danger">
+        <div *ngIf="updateformcontrol.firstname.errors.required">
+            First Name is required.
+        </div>
+    </div>
+    <label> Sur Name </label> 
+        <input type="text" formControlName="surname" value="{{updateForm.value.surname}}">
+    <br>
+    <div id = "error" *ngIf="updateformcontrol.surname.invalid && (updateformcontrol.surname.dirty 
+                || updateformcontrol.surname.touched )"
+              class="alert alert-danger">
+        <div *ngIf="updateformcontrol.surname.errors.required">
+            Sur Name is required.
+        </div>
+    </div>
+    <label> Email </label> 
+        <input type="text" formControlName="email" value="{{updateForm.value.email}}">
+    <br>
+    <div id = "error" *ngIf="updateformcontrol.email.invalid && (updateformcontrol.email.dirty 
+                || updateformcontrol.email.touched)"
+    class="alert alert-danger">
+        <div *ngIf="updateformcontrol.email.errors.required">
+            Email is required.
+        </div>
+        <div *ngIf="updateformcontrol.email.errors.pattern">
+            Enter a valid Email.
+        </div>
+    </div>
+    <label> Date of Birth </label> 
+        <input type="date" formControlName="dob" value="{{updateForm.value.dob}}">
+    <br>
+    <div id = "error" *ngIf="updateformcontrol.dob.invalid && (updateformcontrol.dob.dirty 
+                || updateformcontrol.dob.touched)"
+    class="alert alert-danger">
+        <div *ngIf="updateformcontrol.dob.errors.required">
+            Date of Birth is required.
+        </div>
+    </div>
+    <label> Gender </label> 
+        <input id = "radio" type="radio" formControlName="gender" value="male">Male
+        <input id = "radio" type="radio" formControlName="gender" value="female">Female
+    <br>
+    <button type="submit" [disabled]="!updateForm.valid">Update</button>
+</form>

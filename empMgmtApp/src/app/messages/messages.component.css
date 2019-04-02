@@ -1,0 +1,15 @@
+  #content {
+    font-size:13px;
+    font-weight: bold;
+    margin: 3px;
+    border: solid
+  }
+
+  button.clear {
+    font-size: 15px;
+    font-weight: bold;
+    padding: 2px 15px;
+    margin-left: 150px;
+    background-color: blue;
+    color: white
+  }

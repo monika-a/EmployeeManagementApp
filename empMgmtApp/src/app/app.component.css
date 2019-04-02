@@ -1,0 +1,24 @@
+body {
+    background-color:lightblue;
+    font-family: Arial;
+    border: 2px solid grey;
+    margin: auto;
+    width: 30%;
+    padding: 10px;
+}
+
+h1 {
+    margin: 0px
+}
+
+h5 {
+    margin: 0px;
+    padding-bottom: 25px;
+    color: grey
+}
+
+#content{
+    margin-top: 0.5em;    
+    border-top: 2px solid grey;
+    display: inherit;
+}

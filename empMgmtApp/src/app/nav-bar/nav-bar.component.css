@@ -1,0 +1,17 @@
+nav button {
+    padding: 2px 15px;
+    font-size: 15px;
+    font-weight: bold;
+    display: inline-block;
+    background-color: blue;
+    color: white;
+    border-radius: 4px;
+    margin-right: 7px;
+  }
+
+  nav button:hover {
+    color: blue;
+    background-color:white;
+    border-color: lightblue;
+    border-style: inset;
+  }

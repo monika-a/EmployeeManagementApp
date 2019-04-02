@@ -1,0 +1,35 @@
+<form [formGroup]="readForm" (ngSubmit)="onRead()">
+    <div id = "read">
+    <label> Employee Id </label> 
+        <input type="number" formControlName="employeeId" value="{{readForm.value.employeeId}}">
+    <br>
+    </div>
+    <div id = "error" *ngIf="readformcontrol.employeeId.invalid && (readformcontrol.employeeId.dirty 
+                || readformcontrol.employeeId.touched)"
+              class="alert alert-danger">
+        <div *ngIf="readformcontrol.employeeId.errors.required">
+            Employee Id is required (Range: 111 - 999).
+        </div>
+    </div>
+    <button type="submit" [disabled]="!readForm.valid">Read</button>
+</form>
+
+<form [formGroup]="detailsForm">
+  <label> First Name </label> 
+      <input type="text" formControlName="firstname" value="{{detailsForm.value.firstname}}" readonly>
+  <br>
+  <label> Sur Name </label>
+      <input type="text" formControlName="surname" value="{{detailsForm.value.surname}}" readonly>
+   <br>
+  <label> Email </label>
+      <input type="text" formControlName="email" value="{{detailsForm.value.email}}" readonly>
+   <br>
+  <label> Date of Birth </label>
+      <input type="text" formControlName="dob" value="{{detailsForm.value.dob}}" readonly> 
+  <br>
+  <label> Gender </label>      
+      <input id = "radio" type="radio" formControlName="gender" value="male">Male
+      <input id = "radio" type="radio" formControlName="gender" value="female">Female
+   <br>
+      <button *ngIf="showButton" [disabled]="!detailsForm.valid" (click)="onDelete()">Delete</button>
+</form>
