@@ -20,64 +20,23 @@ generateEmpId.counter = 111;
 router.post('/', async(req, res, next) => {
 
   item = req.body;  
-  //Scan the table to check if duplicate record exists
-  var scanParams = {
+  item.id = generateEmpId.counter;
+          
+  var createParams = {
     TableName: table,
-    FilterExpression: "#firstname = :fname_val and #surname = :sname_val and #email = :email_val",
-    ExpressionAttributeNames: {
-      "#firstname": "firstname",
-      "#surname": "surname",
-      "#email": "email",
-    },
-    ExpressionAttributeValues: {
-      ":fname_val": item.firstname,
-      ":sname_val": item.surname,
-      ":email_val": item.email
-    }
-  }
-
-  console.log("Scanning Employees table.");
-  docClient.scan(scanParams, onScan);
-
-  function onScan(err, data) {
+    Item: item
+  };
+          
+  docClient.put(createParams, function(err, data) {
     if (err) {
-        console.error("Unable to scan the table. Error JSON:", JSON.stringify(err, null, 2));
-        res.send(err.code);
+      console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
+      res.send(err.code);
     } else {
-        console.log("Scan succeeded.");
-        
-        // continue scanning if we have more employees, because
-        // scan can retrieve a maximum of 1MB of data
-        if (typeof data.LastEvaluatedKey != "undefined") {
-            console.log("Scanning for more...");
-            params.ExclusiveStartKey = data.LastEvaluatedKey;
-            docClient.scan(scanParams, onScan);
-        }
-        if (data.Count) {
-          res.send("Employee Record already exists");
-        }
-        else
-        {
-          item.id = generateEmpId.counter;
-          
-          var createParams = {
-            TableName: table,
-            Item: item
-          };
-          
-          docClient.put(createParams, function(err, data) {
-            if (err) {
-                console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
-                res.send(err.code);
-            } else {
-                console.log("Added item:", JSON.stringify(data, null, 2));
-                generateEmpId();
-                res.send(createParams.Item);
-            }
-          });        
-        }
+      console.log("Added item:", JSON.stringify(data, null, 2));
+      generateEmpId();
+      res.send(createParams.Item);
     }
-  }  
+  });             
 });
 //POST - End
 
